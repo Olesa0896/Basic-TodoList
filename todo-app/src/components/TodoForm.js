@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useAuth } from '../context/auth-contex';
 
-const TodoForm = ({ todoAdd, todoEdit, todoUpdate, setTodoEdit }) => {
-  const initialFormValues = {
-    title: '',
-    description: ''
-  }
-  const [formValues, setFormValues] = useState(initialFormValues);
+const TodoForm = () => {
+  const { initialFormValues, todoAdd, todoEdit, setTodoEdit, formValues, setFormValues, error, setError, todoUpdate, successMessage, setSuccessMessage } = useAuth();
   const { title, description } = formValues;
-  const [error, setError] = useState(null);
-  const [successMessage, setSuccessMessage] = useState(null);
 
   useEffect(() => {
     if (todoEdit) {
@@ -16,7 +11,7 @@ const TodoForm = ({ todoAdd, todoEdit, todoUpdate, setTodoEdit }) => {
     } else {
       setFormValues(initialFormValues);
     }
-  }, [todoEdit])
+  }, [todoEdit]);
 
   const handleInputChange = (e) => {
 
@@ -24,7 +19,7 @@ const TodoForm = ({ todoAdd, todoEdit, todoUpdate, setTodoEdit }) => {
       ...formValues, [e.target.name]: e.target.value
     }
     setFormValues(changedFormValues);
-  }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -52,7 +47,8 @@ const TodoForm = ({ todoAdd, todoEdit, todoUpdate, setTodoEdit }) => {
     }, 2000)
 
     setError(null);
-  }
+  };
+
   return (
     <div>
       <h2 className='text-center display-5'>{todoEdit ? 'Editar Tarea' : 'Nueva Tarea'}</h2>

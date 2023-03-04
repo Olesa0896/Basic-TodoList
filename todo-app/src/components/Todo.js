@@ -1,6 +1,10 @@
 import React from 'react';
+import { useAuth } from '../context/auth-contex';
 
-const Todo = ({ todo, todoDelete, todoToogleCompleted, setTodoEdit }) => {
+const Todo = ({ todo }) => {
+
+  const { todoDelete, todoToogleCompleted, setTodoEdit } = useAuth();
+
   return (
     <div className='card mt-2'>
       <div className='card-body'>

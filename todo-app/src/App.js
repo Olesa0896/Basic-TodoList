@@ -1,96 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import TodoList from './components/TodoList';
 import TodoForm from './components/TodoForm';
-
-const initialTodos = [
-  {
-    id: 1,
-    title: 'Todo #1',
-    description: ' Desc del Todo #1',
-    completed: false
-  },
-  {
-    id: 2,
-    title: 'Todo #2',
-    description: ' Desc del Todo #2',
-    completed: false
-  }
-];
-
-const localTodos = JSON.parse(localStorage.getItem('todos'));
+import { useAuth } from './context/auth-contex';
 
 
 const App = () => {
-  const [todos, setTodos] = useState(localTodos || initialTodos);
-  const [todoEdit, setTodoEdit] = useState(null);
+  const { todos } = useAuth();
 
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos));
   }, [todos]);
 
-  const todoDelete = (todoId) => {
-
-    if (todoEdit && todoId === todoEdit.id) {
-      setTodoEdit(null)
-    }
-    const changedTodos = todos.filter(todo => todo.id !== todoId);
-    setTodos(changedTodos);
-  }
-
-  const todoToogleCompleted = (todoId) => {
-    const changedTodos = todos.map(todo => (
-      todo.id === todoId
-        ? { ...todo, completed: !todo.completed }
-        : todo
-    ))
-
-    setTodos(changedTodos)
-  }
-
-  const todoAdd = (todo) => {
-
-    const newTodo = {
-      id: Date.now(),
-      ...todo,
-      completed: false
-    }
-
-    const changedTodos = [
-      newTodo, ...todos
-    ]
-    setTodos(changedTodos)
-  };
-
-  const todoUpdate = (todoEdit) => {
-
-    const changedTodos = todos.map(todo => (
-      todo.id === todoEdit.id
-        ? todoEdit
-        : todo
-    ))
-    setTodos(changedTodos)
-  }
-
   return (
     <div className='container mt-4'>
       <div className='row'>
         <div className='col-8'>
-          <TodoList
-            todos={todos}
-            todoDelete={todoDelete}
-            todoToogleCompleted={todoToogleCompleted}
-            setTodoEdit={setTodoEdit}
-          />
+          <TodoList />
         </div>
         <div className='col-4'>
-          <TodoForm
-            todoEdit={todoEdit}
-            todoAdd={todoAdd}
-            todoUpdate={todoUpdate}
-            setTodoEdit={setTodoEdit}
-          />
+          <TodoForm />
         </div>
 
       </div>
