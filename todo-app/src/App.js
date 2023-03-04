@@ -25,6 +25,10 @@ const App = () => {
   const [todoEdit, setTodoEdit] = useState(null);
 
   const todoDelete = (todoId) => {
+
+    if (todoEdit && todoId === todoEdit.id) {
+      setTodoEdit(null)
+    }
     const changedTodos = todos.filter(todo => todo.id !== todoId);
     setTodos(changedTodos);
   }
