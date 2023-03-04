@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Todo = ({ todo }) => {
+const Todo = ({ todo, todoDelete }) => {
   return (
     <div className='card mt-2'>
       <div className='card-body'>

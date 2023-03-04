@@ -22,11 +22,19 @@ const initialTodos = [
 
 const App = () => {
   const [todos, setTodos] = useState(initialTodos);
+
+  const todoDelete = (todoId) => {
+    const changedTodos = todos.filter(todo => todo.id !== todoId)
+    setTodos(changedTodos)
+  }
   return (
     <div className='container mt-4'>
       <div className='row'>
         <div className='col-8'>
-          <TodoList todos={todos} />
+          <TodoList
+            todos={todos}
+            todoDelete={todoDelete}
+          />
         </div>
         <div className='col-4'>
           <TodoForm />
