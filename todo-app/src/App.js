@@ -24,7 +24,24 @@ const App = () => {
   const [todos, setTodos] = useState(initialTodos);
 
   const todoDelete = (todoId) => {
-    const changedTodos = todos.filter(todo => todo.id !== todoId)
+    const changedTodos = todos.filter(todo => todo.id !== todoId);
+    setTodos(changedTodos);
+  }
+
+  const todoToogleCompleted = (todoId) => {
+    const changedTodos = todos.map(todo => {
+      const todoEdit = {
+        ...todo,
+        completed: !todo.completed
+      }
+
+      if (todo.id === todoId) {
+        return todoEdit
+      }
+      else {
+        return todo
+      }
+    })
     setTodos(changedTodos)
   }
   return (
@@ -34,6 +51,7 @@ const App = () => {
           <TodoList
             todos={todos}
             todoDelete={todoDelete}
+            todoToogleCompleted={todoToogleCompleted}
           />
         </div>
         <div className='col-4'>
