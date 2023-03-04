@@ -20,11 +20,11 @@ const TodoForm = ({ todoAdd }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (title === '') {
+    if (title.trim() === '') {
       setError('Debes indicar un título')
       return;
     }
-    if (description === '') {
+    if (description.trim() === '') {
       setError('Debes indicar un descripción')
       return;
     }
