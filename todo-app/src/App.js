@@ -62,7 +62,7 @@ const App = () => {
     }
 
     const changedTodos = [
-      ...todos, newTodo
+      newTodo, ...todos
     ]
     setTodos(changedTodos)
   };

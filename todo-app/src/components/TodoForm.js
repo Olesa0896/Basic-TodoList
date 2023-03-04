@@ -7,6 +7,7 @@ const TodoForm = ({ todoAdd }) => {
   }
   const [formValues, setFormValues] = useState(initialFormValues);
   const { title, description } = formValues;
+  const [error, setError] = useState(null);
 
   const handleInputChange = (e) => {
 
@@ -18,8 +19,17 @@ const TodoForm = ({ todoAdd }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('agrego')
+
+    if (title === '') {
+      setError('Debes indicar un título')
+      return;
+    }
+    if (description === '') {
+      setError('Debes indicar un descripción')
+      return;
+    }
     todoAdd(formValues)
+    setError(null)
   }
   return (
     <div>
@@ -46,6 +56,12 @@ const TodoForm = ({ todoAdd }) => {
           Agregar tarea
         </button>
       </form>
+      {
+        error &&
+        (<div className='alert alert-danger mt-2'>
+          {error}
+        </div>)
+      }
     </div>
   );
 }
