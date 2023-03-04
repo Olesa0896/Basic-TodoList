@@ -31,7 +31,12 @@ const TodoForm = ({ todoAdd }) => {
     }
     todoAdd(formValues);
     setFormValues(initialFormValues);
-    setSuccessMessage('Agregado con exito')
+    setSuccessMessage('Agregado con exito');
+
+    setTimeout(() => {
+      setSuccessMessage(null);
+    }, 2000)
+
     setError(null);
   }
   return (
