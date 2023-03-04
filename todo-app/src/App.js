@@ -76,9 +76,10 @@ const App = () => {
         </div>
         <div className='col-4'>
           <TodoForm
-            todoAdd={todoAdd}
             todoEdit={todoEdit}
+            todoAdd={todoAdd}
             todoUpdate={todoUpdate}
+            setTodoEdit={setTodoEdit}
           />
         </div>
 

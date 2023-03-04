@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const TodoForm = ({ todoAdd, todoEdit, todoUpdate }) => {
+const TodoForm = ({ todoAdd, todoEdit, todoUpdate, setTodoEdit }) => {
   const initialFormValues = {
     title: '',
     description: ''
@@ -56,6 +56,7 @@ const TodoForm = ({ todoAdd, todoEdit, todoUpdate }) => {
       <h1>{todoEdit ? 'Editar Tarea' : 'Nueva Tarea'}</h1>
       {todoEdit &&
         <button
+          onClick={() => setTodoEdit(null)}
           className='btn btn-sm btn-warning mb-2'
         >
           Cancelar edición
