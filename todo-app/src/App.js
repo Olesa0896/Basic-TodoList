@@ -23,7 +23,7 @@ const localTodos = JSON.parse(localStorage.getItem('todos'));
 
 
 const App = () => {
-  const [todos, setTodos] = useState(initialTodos);
+  const [todos, setTodos] = useState(localTodos || initialTodos);
   const [todoEdit, setTodoEdit] = useState(null);
 
   useEffect(() => {
