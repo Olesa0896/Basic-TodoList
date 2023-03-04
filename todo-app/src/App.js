@@ -1,14 +1,19 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import TodoList from './components/TodoList';
+import TodoForm from './components/TodoForm';
+
 
 const App = () => {
   return (
     <div className='container mt-4'>
       <div className='row'>
         <div className='col-8'>
-          <h1>Lista de tareas</h1>
+          <TodoList />
         </div>
         <div className='col-4'>
-          <h1>Formulario</h1>
+          <TodoForm />
         </div>
 
       </div>
@@ -16,4 +21,4 @@ const App = () => {
   );
 }
 
-export default App;
+export default App; 
