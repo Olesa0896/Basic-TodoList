@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const TodoForm = ({ todoAdd }) => {
+const TodoForm = ({ todoAdd, todoEdit }) => {
   const initialFormValues = {
     title: '',
     description: ''
@@ -9,6 +9,12 @@ const TodoForm = ({ todoAdd }) => {
   const { title, description } = formValues;
   const [error, setError] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
+
+  useEffect(() => {
+    if (todoEdit) {
+      setFormValues(todoEdit);
+    }
+  }, [todoEdit])
 
   const handleInputChange = (e) => {
 

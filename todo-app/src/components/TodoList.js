@@ -2,7 +2,7 @@ import React from 'react';
 import Todo from './Todo';
 
 
-const TodoList = ({ todos, todoDelete, todoToogleCompleted }) => {
+const TodoList = ({ todos, todoDelete, todoToogleCompleted, setTodoEdit }) => {
 
   return (
     <div>
@@ -14,6 +14,7 @@ const TodoList = ({ todos, todoDelete, todoToogleCompleted }) => {
             key={todo.id}
             todoDelete={todoDelete}
             todoToogleCompleted={todoToogleCompleted}
+            setTodoEdit={setTodoEdit}
           />
         ))
       }
