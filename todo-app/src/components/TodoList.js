@@ -1,8 +1,11 @@
 import React from 'react';
 import Todo from './Todo';
+import { useAuth } from '../context/auth-contex';
 
 
-const TodoList = ({ todos, todoDelete, todoToogleCompleted, setTodoEdit }) => {
+const TodoList = () => {
+
+  const { todos } = useAuth();
 
   return (
     <div>
@@ -20,9 +23,6 @@ const TodoList = ({ todos, todoDelete, todoToogleCompleted, setTodoEdit }) => {
               <Todo
                 todo={todo}
                 key={todo.id}
-                todoDelete={todoDelete}
-                todoToogleCompleted={todoToogleCompleted}
-                setTodoEdit={setTodoEdit}
               />
             ))
           )
