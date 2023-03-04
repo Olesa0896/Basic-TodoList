@@ -6,7 +6,7 @@ const TodoList = ({ todos, todoDelete, todoToogleCompleted, setTodoEdit }) => {
 
   return (
     <div>
-      <h1>Soy TodoList</h1>
+      <h2 className='text-end display-4'>Soy TodoList</h2>
 
       {
         todos.length === 0
