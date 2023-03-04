@@ -8,6 +8,7 @@ const TodoForm = ({ todoAdd }) => {
   const [formValues, setFormValues] = useState(initialFormValues);
   const { title, description } = formValues;
   const [error, setError] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(null);
 
   const handleInputChange = (e) => {
 
@@ -28,8 +29,10 @@ const TodoForm = ({ todoAdd }) => {
       setError('Debes indicar un descripción')
       return;
     }
-    todoAdd(formValues)
-    setError(null)
+    todoAdd(formValues);
+    setFormValues(initialFormValues);
+    setSuccessMessage('Agregado con exito')
+    setError(null);
   }
   return (
     <div>
@@ -60,6 +63,12 @@ const TodoForm = ({ todoAdd }) => {
         error &&
         (<div className='alert alert-danger mt-2'>
           {error}
+        </div>)
+      }
+      {
+        successMessage &&
+        (<div className='alert alert-success mt-2'>
+          {successMessage}
         </div>)
       }
     </div>
