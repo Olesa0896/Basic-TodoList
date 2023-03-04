@@ -53,6 +53,16 @@ const App = () => {
     setTodos(changedTodos)
   };
 
+  const todoUpdate = (todoEdit) => {
+
+    const changedTodos = todos.map(todo => (
+      todo.id === todoEdit.id
+        ? todoEdit
+        : todo
+    ))
+    setTodos(changedTodos)
+  }
+
   return (
     <div className='container mt-4'>
       <div className='row'>
@@ -68,6 +78,7 @@ const App = () => {
           <TodoForm
             todoAdd={todoAdd}
             todoEdit={todoEdit}
+            todoUpdate={todoUpdate}
           />
         </div>
 

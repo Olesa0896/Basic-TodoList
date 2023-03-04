@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const TodoForm = ({ todoAdd, todoEdit }) => {
+const TodoForm = ({ todoAdd, todoEdit, todoUpdate }) => {
   const initialFormValues = {
     title: '',
     description: ''
@@ -35,7 +35,12 @@ const TodoForm = ({ todoAdd, todoEdit }) => {
       setError('Debes indicar un descripción')
       return;
     }
-    todoAdd(formValues);
+    if (todoEdit) {
+      todoUpdate(formValues)
+    } else {
+      todoAdd(formValues);
+    }
+
     setFormValues(initialFormValues);
     setSuccessMessage('Agregado con exito');
 
@@ -47,7 +52,7 @@ const TodoForm = ({ todoAdd, todoEdit }) => {
   }
   return (
     <div>
-      <h1>Nueva Tarea</h1>
+      <h1>{todoEdit ? 'Editar Tarea' : 'Nueva Tarea'}</h1>
       <form onSubmit={handleSubmit}>
         <input
           type='text'
@@ -67,7 +72,7 @@ const TodoForm = ({ todoAdd, todoEdit }) => {
         <button
           className='btn btn-primary w-100 mt-2'
         >
-          Agregar tarea
+          {todoEdit ? 'Actualizar Tarea' : 'Agregar Tarea'}
         </button>
       </form>
       {
