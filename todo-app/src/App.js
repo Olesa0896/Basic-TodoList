@@ -43,11 +43,13 @@ const App = () => {
     //   }
     // })
 
-    const changedTodos = todos.map(todo => (
-      todo.id === todoId
-        ? { ...todo, completed: !todo.completed }
-        : todo
-    ))
+    // const changedTodos = todos.map(todo => (
+    //   todo.id === todoId
+    //     ? { ...todo, completed: !todo.completed }
+    //     : todo
+    // ))
+
+    const changedTodos = todos.map(todo => todo.id === todoId ? { ...todo, completed: !todo.completed } : todo)
     setTodos(changedTodos)
   }
   return (
