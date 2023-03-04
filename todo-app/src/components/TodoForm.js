@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const TodoForm = () => {
+const TodoForm = ({ todoAdd }) => {
   const initialFormValues = {
     title: '',
     description: ''
@@ -13,12 +13,18 @@ const TodoForm = () => {
     const changedFormValues = {
       ...formValues, [e.target.name]: e.target.value
     }
-    setFormValues(changedFormValues)
+    setFormValues(changedFormValues);
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('agrego')
+    todoAdd(formValues)
   }
   return (
     <div>
       <h1>Nueva Tarea</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <input
           type='text'
           placeholder='Título'
