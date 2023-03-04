@@ -29,19 +29,25 @@ const App = () => {
   }
 
   const todoToogleCompleted = (todoId) => {
-    const changedTodos = todos.map(todo => {
-      const todoEdit = {
-        ...todo,
-        completed: !todo.completed
-      }
+    // const changedTodos = todos.map(todo => {
+    //   const todoEdit = {
+    //     ...todo,
+    //     completed: !todo.completed
+    //   }
 
-      if (todo.id === todoId) {
-        return todoEdit
-      }
-      else {
-        return todo
-      }
-    })
+    //   if (todo.id === todoId) {
+    //     return todoEdit
+    //   }
+    //   else {
+    //     return todo
+    //   }
+    // })
+
+    const changedTodos = todos.map(todo => (
+      todo.id === todoId
+        ? { ...todo, completed: !todo.completed }
+        : todo
+    ))
     setTodos(changedTodos)
   }
   return (
