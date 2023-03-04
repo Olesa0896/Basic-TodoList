@@ -1,15 +1,15 @@
 import React from 'react';
 
-const Todo = () => {
+const Todo = ({ todo }) => {
   return (
     <div className='card mt-2'>
       <div className='card-body'>
         <h3 className='card-title text-end'>
-          Título de la tarea
+          {todo.title}
           <button className='btn btn-sm btn-outline-success ms-2'> Terminar </button>
         </h3>
         <p className='card-text text-end'>
-          Descripción de la tarea
+          {todo.description}
         </p>
         <hr />
         <div className='d-flex justify-content-end'>
