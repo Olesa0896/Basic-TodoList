@@ -37,12 +37,13 @@ const TodoForm = ({ todoAdd, todoEdit, todoUpdate }) => {
     }
     if (todoEdit) {
       todoUpdate(formValues)
+      setSuccessMessage('Actualizado con exito');
     } else {
       todoAdd(formValues);
+      setSuccessMessage('Agregado con exito');
+      setFormValues(initialFormValues);
     }
 
-    setFormValues(initialFormValues);
-    setSuccessMessage('Agregado con exito');
 
     setTimeout(() => {
       setSuccessMessage(null);
@@ -53,6 +54,14 @@ const TodoForm = ({ todoAdd, todoEdit, todoUpdate }) => {
   return (
     <div>
       <h1>{todoEdit ? 'Editar Tarea' : 'Nueva Tarea'}</h1>
+      {todoEdit &&
+        <button
+          className='btn btn-sm btn-warning mb-2'
+        >
+          Cancelar edición
+        </button>
+
+      }
       <form onSubmit={handleSubmit}>
         <input
           type='text'
